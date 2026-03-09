@@ -1,0 +1,8 @@
+/* CSS for Assignment 3 */
+.active  {
+    display: block;
+}
+
+.inactive {
+    display: none;
+}

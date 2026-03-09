@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- Created 09/03/2026 by Alyx Deland-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGI Version</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <fieldset>
+        <legend>Rock, Paper, Scissors, Lizard, Spock</legend>
+        <div class="active" id="name">
+            <input type="text" id="nameinput" required>
+            <label for="nameinput">Enter your name:</label>
+        </div>
+        <div class="inactive">
+            <form action="/cgi-bin/play-game.cgi" method="get">
+                <h3>Choose one:</h3>
+                <input type="radio" id="rock" name="choice" value="rock" required>
+                <label for="rock">Rock</label><br>
+                <input type="radio" id="paper" name="choice" value="paper">
+                <label for="paper">Paper</label><br>
+                <input type="radio" id="scissors" name="choice" value="scissors">
+                <label for="scissors">Scissors</label><br>
+                <input type="radio" id="lizard" name="choice" value="lizard">
+                <label for="lizard">Lizard</label><br>
+                <input type="radio" id="spock" name="choice" value="spock">
+                <label for="spock">Spock</label><br>
+                <br>
+                <button type="submit">Lock in</button>
+            </form>
+        </div>
+    </fieldset>
+</body>
+</html>
