@@ -1,4 +1,9 @@
-/* CSS for Assignment 3 */
+/* 
+CSS for Assignment 3
+Created 09/03/2026 by Alyx Deland
+Rev Hist:
+    Last editted 26/03/2026
+*/
 .active  {
     display: block;
 }
@@ -6,3 +11,8 @@
 .inactive {
     display: none;
 }
+
+#errorMessage {
+    color: red;
+}
+

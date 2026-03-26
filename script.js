@@ -1,6 +1,9 @@
-// Javascript for Assignment 3
-
-
+/*
+Javascript for Assignment 3
+Created 09/03/2026 by Alyx Deland
+Rev Hist:
+    Last editted 26/03/2026
+*/
 
 function showChars() {
     document.getElementById('name').classList.remove('active');

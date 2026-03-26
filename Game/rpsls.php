@@ -1,5 +1,12 @@
 <?php
-// Trying to be as identical as possible
+/* 
+PHP for Assignment 3
+Created 09/03/2026 by Alyx Deland
+Rev Hist:
+    Last editted 26/03/2026
+Trying to be as identical as possible to main.c
+*/
+
 
 // Get Data from Form
 $username = isset($_POST['username']) ? htmlspecialchars($_POST['username']) : "User";
