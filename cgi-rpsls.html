@@ -9,13 +9,27 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
     <fieldset>
         <legend>Rock, Paper, Scissors, Lizard, Spock</legend>
         <div class="active" id="name">
             <input type="text" id="nameinput" required>
             <label for="nameinput">Enter your name:</label>
+            <button id="next" type="button" onClick="showChars()">Next</button>
         </div>
-        <div class="inactive">
+        <div id="characters" class="inactive">
+            <select name="chars" id="characters">
+                <option value="A">Amy</option>
+                <option value="B">Bernadette</option>
+                <option value="C">Howard</option>
+                <option value="D">Leonard</option>
+                <option value="E">Penny</option>
+                <option value="F">Raj</option>
+                <option value="G">Sheldon</option>
+                <option value="H">Stuart</option>
+            </select>
+        </div>
+        <div id="game" class="inactive">
             <form action="/cgi-bin/play-game.cgi" method="get">
                 <h3>Choose one:</h3>
                 <input type="radio" id="rock" name="choice" value="rock" required>
