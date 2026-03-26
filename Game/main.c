@@ -3,6 +3,8 @@
 #include <string.h>
 #include <time.h>
 
+//
+
 // Function to decode URL-encoded characters (like %20 for space)
 void decode_url(char *src) {
     char *dst = src;
@@ -19,76 +21,87 @@ void decode_url(char *src) {
 }
 
 int main(void) {
-    // 1. Required Header for CGI 
     printf("Content-type: text/html\n\n");
 
-    // 2. Get Data from Environment 
+    // Get Data from Environment 
     char *query = getenv("QUERY_STRING");
-    char userName[100] = "Player", charChoice[100] = "", userMoveStr[10] = "";
-    int userMove = 0, cpuMove = 0;
+    char username[100] = "User";
+    char charChoice[100] = "Computer";
+    int userMove = 0;
 
     if (query != NULL) {
-        sscanf(query, "userName=%[^&]&chars=%[^&]&choice=%s", userName, charChoice, userMoveStr);
-        decode_url(userName);
+        sscanf(query, "username=%[^&]&charChoice=%[^&]&game=%s", username, charChoice, &userMove);
+        decode_url(username);
         decode_url(charChoice);
-        userMove = atoi(userMoveStr);
     }
 
-    // 3. Randomize Computer Move (1-5) 
+    // Randomize Computer Move (1-5) 
     srand((unsigned int)time(NULL));
-    cpuMove = (rand() % 5) + 1; // 1:Rock, 2:Paper, 3:Scissors, 4:Lizard, 5:Spock
+    int cpuMove = (rand() % 5) + 1; // 1:Rock, 2:Paper, 3:Scissors, 4:Lizard, 5:Spock
 
-    // 4. Game Logic & Rules
-    const char *names[] = {"", "Rock", "Paper", "Scissors", "Lizard", "Spock"};
-    const char *rules[] = {
-        "", // Padding
-        "Rock crushes Scissors", "Paper covers Rock", "Scissors cuts Paper",
-        "Lizard eats Paper", "Spock vaporizes Rock", "Rock crushes Lizard",
-        "Lizard poisons Spock", "Spock smashes Scissors", "Scissors decapitate Lizard",
-        "Paper disproves Spock"
-    };
-
-    char resultMsg[200] = "";
-    char status[10] = "TIE"; // Default
+    int result = 0;
+    char ruleDescription[200] = "";
 
     if (userMove == cpuMove) {
-        strcpy(resultMsg, "when both players make the same choice, it is a TIE");
-        strcpy(status, "TIE");
+        result = 0;
     } else {
-        // Simple logic check for wins
-        if ((userMove == 1 && (cpuMove == 3 || cpuMove == 4)) ||
+         if ((userMove == 1 && (cpuMove == 3 || cpuMove == 4)) ||
             (userMove == 2 && (cpuMove == 1 || cpuMove == 5)) ||
             (userMove == 3 && (cpuMove == 2 || cpuMove == 4)) ||
             (userMove == 4 && (cpuMove == 2 || cpuMove == 5)) ||
-            (userMove == 5 && (cpuMove == 1 || cpuMove == 3))) {
-            sprintf(resultMsg, "According to the rules: %s", "User Wins!", *rules[userMove]); // Replace with specific rule
-            strcpy(status, "WIN");
+            (userMove == 5 && (cpuMove == 1 || cpuMove == 3))) 
+        {
+            result = 1;
         } else {
-            sprintf(resultMsg, "According to the rules: %s", "Computer Wins!"); 
-            strcpy(status, "LOSE");
+            result = 2;
         }
     }
 
-    // 5. Output HTML
-    printf("<html><head><style>ul{display:inline-block; vertical-align:top;} img{max-width:400px;}</style></head><body>");
-    printf("<h1>Game Results</h1>");
-    
-    // Results List
-    printf("<ul>");
-    if (strcmp(status, "WIN") == 0) printf("<li><b>%s WON</b></li>", userName);
-    else if (strcmp(status, "LOSE") == 0) printf("<li><b>%s WON</b></li>", charChoice);
-    else printf("<li><b>Nobody WON - it was a TIE</b></li>");
+    if ((userMove == 1 && (cpuMove == 3 || cpuMove == 4)) ||
+       (cpuMove == 1 && (userMove == 3 || userMove == 4))) 
+    {
+        strcpy(ruleDescription, "Rock crushes Scissors and Lizard");
+    } else if ((userMove == 2 && (cpuMove == 1 || cpuMove == 5)) ||
+              (cpuMove == 2 && (userMove == 1 || userMove == 5)))
+    {
+        strcpy(ruleDescription, "Paper covers Rock and disproves Spock");
+    } else if ((userMove == 3 && (cpuMove == 2 || cpuMove == 4)) ||
+              (cpuMove == 3 && (userMove == 2 || userMove == 4)))
+    {
+        strcpy(ruleDescription, "Scissors cuts Paper and kills Lizard");
+    } else if ((userMove == 4 && (cpuMove == 2 || cpuMove == 5)) ||
+              (cpuMove == 4 && (userMove == 2 || userMove == 5)))
+    {
+        strcpy(ruleDescription, "Lizard eats Paper and poisons Spock");
+    } else if ((userMove == 5 && (cpuMove == 1 || cpuMove == 3)) ||
+              (cpuMove == 5 && (userMove == 1 || userMove == 3)))
+    {
+        strcpy(ruleDescription, "Spock vaporizes Rock and smashes Scissors");
+    } else if (userMove == cpuMove) {
+        strcpy(ruleDescription, "When both players make the same choice, it is a TIE");
+    } else {
+        strcpy(ruleDescription, "");
+    }
 
-    printf("<li>%s chose %s</li>", userName, names[userMove]);
-    printf("<li>%s chose %s</li>", charChoice, names[cpuMove]);
-    printf("<li>%s</li>", resultMsg);
+    // Output HTML
+    printf("<html><body>");
+    printf("<div style='display: flex; align-items: center;'>");
+    
+    printf("<ul>");
+    if (result == 1) printf("<li><b>%s WON</b></li>", username);
+    else if (result == 2) printf("<li><b>%s WON</b></li>", charChoice);
+    else printf("<li><b>No winner - it was a TIE</b></li>");
+
+    printf("<li>%s chose %d</li>", username, userMove);
+    printf("<li>%s chose %d</li>", charChoice, cpuMove);
+    printf("<li>%s</li>", ruleDescription);
     printf("</ul>");
 
-    // Win/Loss/Tie Image
-    // Using relative path to Game folder
-    printf("<img src='theGame/%s.png' alt='%s' style='margin-left:20px;'>", status, status);
-
-    printf("</body></html>");
+    // Display image beside the text
+    const char* imgPath = (result == 1) ? "Win.png" : (result == 2) ? "Lose.png" : "Tie.png";
+    printf("<img src='/images/%s' style='max-width:400px; margin-left:20px;'>", imgPath);
+    
+    printf("</div></body></html>");
 
     return 0;
 }
