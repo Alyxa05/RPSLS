@@ -10,42 +10,47 @@
 </head>
 <body>
     <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
-    <fieldset>
+    <form id="rpslsForm" action="rpsls.exe" method="GET" onsubmit="return validateForm()">
         <legend>Rock, Paper, Scissors, Lizard, Spock</legend>
-        <div class="active" id="name">
+        <div name="name" class="active" id="name">
             <input type="text" id="nameinput" required>
             <label for="nameinput">Enter your name:</label>
-            <button id="next" type="button" onClick="showChars()">Next</button>
+            <br>
+            <div id="errorMessage"></div>
+            <button id="next" type="button" onClick="validateName()">Enter</button>
         </div>
-        <div id="characters" class="inactive">
-            <select name="chars" id="characters">
+        <div name="character" id="characters" class="inactive">
+            <select name="chars" id="char-selection" required>
+                <option value="" default></option>
                 <option value="A">Amy</option>
                 <option value="B">Bernadette</option>
-                <option value="C">Howard</option>
-                <option value="D">Leonard</option>
-                <option value="E">Penny</option>
-                <option value="F">Raj</option>
-                <option value="G">Sheldon</option>
-                <option value="H">Stuart</option>
+                <option value="H">Howard</option>
+                <option value="L">Leonard</option>
+                <option value="P">Penny</option>
+                <option value="R">Raj</option>
+                <option value="Sh">Sheldon</option>
+                <option value="St">Stuart</option>
             </select>
+            <br>
+            <div id="errorMessage"></div>
+            <button type="button" onClick="charSelect()">Next</button>
         </div>
-        <div id="game" class="inactive">
-            <form action="/cgi-bin/play-game.cgi" method="get">
-                <h3>Choose one:</h3>
-                <input type="radio" id="rock" name="choice" value="rock" required>
-                <label for="rock">Rock</label><br>
-                <input type="radio" id="paper" name="choice" value="paper">
-                <label for="paper">Paper</label><br>
-                <input type="radio" id="scissors" name="choice" value="scissors">
-                <label for="scissors">Scissors</label><br>
-                <input type="radio" id="lizard" name="choice" value="lizard">
-                <label for="lizard">Lizard</label><br>
-                <input type="radio" id="spock" name="choice" value="spock">
-                <label for="spock">Spock</label><br>
-                <br>
-                <button type="submit">Lock in</button>
-            </form>
+        <div name="game" id="game" class="inactive">
+            <h3>Choose one:</h3>
+            <input type="radio" id="rock" name="choice" value="1">
+            <label for="rock">Rock</label><br>
+            <input type="radio" id="paper" name="choice" value="2">
+            <label for="paper">Paper</label><br>
+            <input type="radio" id="scissors" name="choice" value="3">
+            <label for="scissors">Scissors</label><br>
+            <input type="radio" id="lizard" name="choice" value="4">
+            <label for="lizard">Lizard</label><br>
+            <input type="radio" id="spock" name="choice" value="5">
+            <label for="spock">Spock</label><br> 
+            <br>
+            <div id="errorMessage"></div>
         </div>
-    </fieldset>
+        <button type="submit">Lock in</button>
+    </form>
 </body>
 </html>
