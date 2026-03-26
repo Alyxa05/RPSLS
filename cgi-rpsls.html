@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<!-- Created 09/03/2026 by Alyx Deland-->
+<!-- 
+Created 09/03/2026 by Alyx Deland
+Rev Hist:
+    Last editted 26/03/2026
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +14,9 @@
 </head>
 <body>
     <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
-    <form id="rpslsForm" action="rpsls.exe" method="GET" onsubmit="return validateForm()">
+    <form id="rpslsForm" action="Game/rpsls.exe" method="GET" onsubmit="return validateForm()">
         <legend>Rock, Paper, Scissors, Lizard, Spock</legend>
-        <div name="name" class="active" id="name">
+        <div name="userName" class="active" id="name">
             <input type="text" id="nameinput" required>
             <label for="nameinput">Enter your name:</label>
             <br>
@@ -20,7 +24,7 @@
             <button id="next" type="button" onClick="validateName()">Enter</button>
         </div>
         <div name="character" id="characters" class="inactive">
-            <select name="chars" id="char-selection" required>
+            <select name="charChoice" id="char-selection" required>
                 <option value="" default></option>
                 <option value="A">Amy</option>
                 <option value="B">Bernadette</option>
@@ -46,7 +50,7 @@
             <input type="radio" id="lizard" name="choice" value="4">
             <label for="lizard">Lizard</label><br>
             <input type="radio" id="spock" name="choice" value="5">
-            <label for="spock">Spock</label><br> 
+            <label for="spock">Spock</label><br>
             <br>
             <div id="errorMessage"></div>
         </div>
