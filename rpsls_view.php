@@ -19,7 +19,7 @@
         </ul>
         
         <?php
-        echo "<img src='Game/images/$imgPath' style='max-width:400px; margin-left:20px;' alt='Result Image'>";
+        echo "<img src='/RPSLS/Game/images/$imgPath' style='max-width:400px; margin-left:20px;' alt='Result Image'>";
         ?>
     </div>
 </body>

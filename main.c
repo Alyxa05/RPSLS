@@ -51,7 +51,7 @@ void print_game_results(int result, const char *username, const char *charChoice
 void print_html_footer(int result) {
     // Determine the image path based on the result
     const char* imgPath = (result == 1) ? "Win.png" : (result == 2) ? "Lose.png" : "Tie.png";
-    printf("        <img src='Game/images/%s' style='max-width:400px; margin-left:20px;' alt='Result Image'>\n", imgPath);
+    printf("        <img src='/RPSLS/Game/images/%s' style='max-width:400px; margin-left:20px;' alt='Result Image'>\n", imgPath);
     printf("    </div>\n");
     printf("</body></html>\n"); // Close html
 }
