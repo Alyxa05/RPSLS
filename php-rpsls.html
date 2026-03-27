@@ -15,14 +15,14 @@ Rev Hist:
 <body>
     <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
     <form id="rpslsForm" action="rpsls.php" method="POST" onsubmit="return validateForm()">
-        <legend>Rock, Paper, Scissors, Lizard, Spock</legend>
         <div class="active" id="name">
-            <input type="text" id="nameinput" name="username" required>
             <label for="nameinput">Enter your name:</label>
+            <input type="text" id="nameinput" name="username" required>
             <br>
             <button id="next" type="button" onClick="validateName()">Enter</button>
         </div>
         <div id="characters" class="inactive">
+            <label for="char-selection">Choose your character:</label>
             <select name="charChoice" id="char-selection" required>
                 <option value="" selected disabled></option>
                 <option value="Amy">Amy</option>
@@ -38,7 +38,7 @@ Rev Hist:
             <button type="button" onClick="charSelect()">Next</button>
         </div>
         <div id="game" class="inactive">
-            <h3>Choose one:</h3>
+            <h3>Choose your Move:</h3>
             <input type="radio" id="rock" name="choice" value="1">
             <label for="rock">Rock</label><br>
             <input type="radio" id="paper" name="choice" value="2">

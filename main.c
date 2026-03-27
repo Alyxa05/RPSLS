@@ -26,8 +26,9 @@ void decode_url(char *src) {
 
 // Helper function to print the HTML header and opening tags
 void print_html_header() {
-    printf("<html><body>\n"); // Open html
-    printf("    <div style='display: flex; align-items: center;'>\n");
+    printf("<html><head><title>Results</title>\n");
+    printf("</head><body style='background-color: gray; color: green;'>\n"); // Open html
+    printf("    <div style='display: flex; justify-content: center; align-items: center;'>\n");
     printf("        <ul>\n");
 }
 
@@ -50,8 +51,8 @@ void print_game_results(int result, const char *username, const char *charChoice
 // Helper function to print the image and HTML closing tags
 void print_html_footer(int result) {
     // Determine the image path based on the result
-    const char* imgPath = (result == 1) ? "Win.png" : (result == 2) ? "Lose.png" : "Tie.png";
-    printf("        <img src='/RPSLS/Game/images/%s' style='max-width:400px; margin-left:20px;' alt='Result Image'>\n", imgPath);
+    const char* imgBaseName = (result == 1) ? "Win" : (result == 2) ? "Lose" : "Tie";
+    printf("        <img src='/RPSLS/theGame/images/%s.png' style='max-width:400px; margin-left:20px;' alt='Result Image'>\n", imgBaseName);
     printf("    </div>\n");
     printf("</body></html>\n"); // Close html
 }
@@ -92,7 +93,7 @@ int main(void) {
     // Check if user's move is within the valid range.
     if (userMove < 1 || userMove > 5) {
         result = 2; // Computer wins by default
-        strcpy(ruleDescription, "Invalid move from user. Computer wins.");
+        strcpy(ruleDescription, "Invalid move. Computer wins.");
     } else if (userMove == cpuMove) {
         result = 0; // Tie
         strcpy(ruleDescription, "When both players make the same choice, it is a TIE");

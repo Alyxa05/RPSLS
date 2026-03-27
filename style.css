@@ -12,7 +12,30 @@ Rev Hist:
     display: none;
 }
 
+.active #game {
+    justify-self: start;
+    display: inline-block;
+    text-align: left;
+}
+
 #errorMessage {
     color: red;
 }
 
+#rpslsForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(0, 136, 255);
+}
+
+h1 {
+    font-size: 30px;
+}
