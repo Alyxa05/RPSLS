@@ -1,6 +1,9 @@
 <html>
-<body>
-    <div style='display: flex; align-items: center;'>
+    <head>
+        <title>Results</title>
+    </head>
+<body style='background-color: gray; color: green;'>
+    <div style='display: flex; justify-content: center; align-items: center;'>
         <ul>
             <?php
             // Messages depending on result of the game
@@ -19,7 +22,7 @@
         </ul>
         
         <?php
-        echo "<img src='/RPSLS/Game/images/$imgPath' style='max-width:400px; margin-left:20px;' alt='Result Image'>";
+        echo "<img src='/Game/images/$imgPath.png' style='max-width:400px; margin-left:20px;' alt='Result Image'>";
         ?>
     </div>
 </body>

@@ -62,6 +62,7 @@ if ($userMove < 1 || $userMove > 5) {
             else $ruleDescription = "Spock smashes Scissors";
         }
     } else {
+        // If it's not a tie and the user didn't win, the CPU must have won.
         $result = 2; // CPU wins
         // Rule descriptions for CPU win cases
         if ($cpuMove == 1) { // Rock
@@ -87,6 +88,6 @@ if ($userMove < 1 || $userMove > 5) {
 $imgPath = ($result == 1) ? "Win.png" : (($result == 2) ? "Lose.png" : "Tie.png");
 
 // Output HTML
-require_once 'rpsls_view.php'; // Include the HTML template
+require_once 'rpsls_view.php';
 
 ?>
