@@ -14,32 +14,30 @@ Rev Hist:
 </head>
 <body>
     <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
-    <form id="rpslsForm" action="Game/rpsls.php" method="POST" onsubmit="return validateForm()">
+    <form id="rpslsForm" action="rpsls.php" method="POST" onsubmit="return validateForm()">
         <legend>Rock, Paper, Scissors, Lizard, Spock</legend>
-        <div name="userName" class="active" id="name">
-            <input type="text" id="nameinput" required>
+        <div class="active" id="name">
+            <input type="text" id="nameinput" name="username" required>
             <label for="nameinput">Enter your name:</label>
             <br>
-            <div id="errorMessage"></div>
             <button id="next" type="button" onClick="validateName()">Enter</button>
         </div>
-        <div name="character" id="characters" class="inactive">
+        <div id="characters" class="inactive">
             <select name="charChoice" id="char-selection" required>
-                <option value="" default></option>
-                <option value="A">Amy</option>
-                <option value="B">Bernadette</option>
-                <option value="H">Howard</option>
-                <option value="L">Leonard</option>
-                <option value="P">Penny</option>
-                <option value="R">Raj</option>
-                <option value="Sh">Sheldon</option>
-                <option value="St">Stuart</option>
+                <option value="" selected disabled></option>
+                <option value="Amy">Amy</option>
+                <option value="Bernadette">Bernadette</option>
+                <option value="Howard">Howard</option>
+                <option value="Leonard">Leonard</option>
+                <option value="Penny">Penny</option>
+                <option value="Raj">Raj</option>
+                <option value="Sheldon">Sheldon</option>
+                <option value="Stuart">Stuart</option>
             </select>
             <br>
-            <div id="errorMessage"></div>
             <button type="button" onClick="charSelect()">Next</button>
         </div>
-        <div name="game" id="game" class="inactive">
+        <div id="game" class="inactive">
             <h3>Choose one:</h3>
             <input type="radio" id="rock" name="choice" value="1">
             <label for="rock">Rock</label><br>
@@ -52,9 +50,9 @@ Rev Hist:
             <input type="radio" id="spock" name="choice" value="5">
             <label for="spock">Spock</label><br>
             <br>
-            <div id="errorMessage"></div>
         </div>
-        <button type="submit">Lock in</button>
+        <div id="errorMessage"></div>
+        <button id="last" type="submit" class="inactive">Lock in</button>
     </form>
 </body>
 </html>
